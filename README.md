@@ -1,22 +1,23 @@
-#Loan Approval Prediction with Machine-Learning
-##Yong-Sung Masuda
-##December 20, 2024
-##Purpose:  
+# Loan Approval Prediction with Machine-Learning
+Author: Yong-Sung Masuda  
+Date: December 20, 2024
+## Purpose
 Loan applications are approved or denied by financial institutions based on a set of disclosed criteria (credit history length, loan amount, loan intent, etc.) but with undisclosed decision-making processes. The result of a loan application likely varies based on the institution it was submitted to and the loan officer tasked with its review. Since the process is not strictly defined, predicting the outcome of a loan application is a problem well suited to a machine-learning solution. A well-trained prediction model may be used by financial institutions for various purposes, including application triage, automatic application approvals, and targeted marketing campaigns. Such a prediction model may also be of service to potential applicants in order for them to gauge what outcome to expect and perhaps adjust their loan application before submission.  
-##Dataset:  
+## Dataset
 The dataset used for this model was sourced from Kaggle.com, specifically from season 4, episode 10 of their playground series. This dataset was generated from a deep learning model trained on a loan approval prediction dataset with similar feature distributions. The dataset includes a labeled training set with 58,645 samples and an unlabeled test set of 39,098 samples. The training set is divided into three subsets:  
 -	Training set of 41,051 samples (70%)  
 -	Validation set of 8,797 samples (15%)  
 -	Private test set of 8,797 samples (15%)  
 The training set is used to fit models to the data during the model selection phase. The validation set is used to evaluate the models for selection during hyperparameter tuning and is also used for early stopping. The private test set is used to ensure the selected model is not overfit to the training and validation sets, and is also used to compute additional performance metrics.  
  
-##Data Preprocessing:
+## Data Preprocessing
 The parameters of each data sample are preprocessed as either categorical or numerical. Categorical parameters are one-hot encoded and numerical parameters are regularized to be a floating-point decimal between 0 and 1.
 The categorical parameters are:  
 -	Person home ownership (rent, own, or mortgage)  
 -	Loan intent (education, medical, personal, etc.)  
 -	Loan grade (A, B, C, D, or E)  
 -	Person default on file (yes or no)  
+
 The numerical parameters are:  
 -	Person age  
 -	Person income  
@@ -25,7 +26,7 @@ The numerical parameters are:
 -	Loan percent of income
 -	Person credit history length  
 -	Person employment length  
-##Model Architecture and Hyperparameter Tuning:  
+## Model Architecture and Hyperparameter Tuning
 The neural network implemented has two hidden layers each with ReLU activation and dropout regularization. The sigmoid activation function is applied to the final layer, resulting in an output between 0 and 1 indicating the probability of loan approval. Bayesian optimization of hyperparameters is implemented with the Optuna optimization framework. The hyperparameters tuned and their range limits are:  
 -	Sizes of each hidden layer (16 to 256 neurons)  
 -	Dropout rate (10% - 50%)  
@@ -56,7 +57,7 @@ A total of 20 trials were conducted, with each trial trained for a maximum of 10
 | 18    | 156           | 161           | 0.3438448586324775  | 0.006288754692924151   | 139        | 0.9445265431397067 |
 | 19    | 158           | 171           | 0.48499623840157924 | 0.007074120844630719   | 253        | 0.9421393656928498 |
   
-##Evaluation:  
+## Evaluation 
 The best model selected from hyperparameter tuning achieves a prediction accuracy of 94.46% on the validation set (used for model selection) and an accuracy of 94.57% on the private test set. The similar results achieved on the validation set and private test set confirms that the model is not overfit to the training and validation data, and is able to extrapolate. Additional evaluations are performed on the results from the private test set.  
 
 ![image](/images/loan_approval_figure_1.png)
