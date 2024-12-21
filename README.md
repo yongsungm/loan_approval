@@ -63,3 +63,6 @@ The best model selected from hyperparameter tuning achieves a prediction accurac
 ![image](/images/loan_approval_figure_1.png)
   
 These graphics are not available for the final model since it is trained on the entire training set and the labels for the test set are unavailable. To evaluate the final model, predictions on the unlabeled test set are submitted to Kaggle where they are segmented into two sets in order to provide two AUROC scores, one being displayed until the competition deadline, and the other being published after. The pre-deadline score achieved by the final model is 0.93740 and the post-deadline score is 0.93313.
+
+## Acknowledgements
+The code for this project was developed while consulting various AI chatbots powered by Large Language Models (LLMs), including Claude Sonnet 3.5, Gemini 1.5 Flash, and ChatGPT 3.5. While the models did not produce directly usable code, they were instrumental in drafting code and providing usage examples for Python library functions. The human contributors behind the training data for these models, likely users of platforms such as GitHub and Stack Overflow, deserve recognition for their indirect support.
